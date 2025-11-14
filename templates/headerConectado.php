@@ -1,6 +1,7 @@
 <?php
 session_start();
 ?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -22,7 +23,8 @@ session_start();
         <h1>Bem-vindo ao Portal G11</h1>
         <nav>
             <a href="index.php">Início</a>
-            <a href="login.php">Conectar-se</a>
+            <a href="logout.php">Desconectar</a>
+            <a href="registrar.php">Cadastrar</a>
             <a href="sobre.php">Sobre</a>
         </nav>
     </header>

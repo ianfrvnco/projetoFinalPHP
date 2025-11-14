@@ -4,14 +4,21 @@ include_once './classes/Usuario.php';
 
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+
+    $senha1 = $_POST['senha'];
+    $senha2 = $_POST['senhaConfirma'];
+
+    if ($senha1 !== $senha2) {
+    echo "As senhas não coincidem.";
+    exit();
+}
+
     $usuario = new Usuario($db);
     $nome = $_POST['nome'];
-    $sexo = $_POST['sexo'];
-    $fone = $_POST['fone'];
     $email = $_POST['email'];
-    $senha = $_POST['senha'];
-    $usuario->criar($nome, $sexo, $fone, $email, $senha);
-    header('Location: portal.php');
+    $senha = $senha1;
+    $usuario->criar($nome, $email, $senha);
+    header('Location: index.php');
     exit();
 }
 ?>
@@ -27,22 +34,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <label for="nome">Nome:</label>
         <input type="text" name="nome" required>
         <br><br>
-        <label>Sexo:</label>
-        <label for="masculino">
-            <input type="radio" id="masculino" name="sexo" value="M" required> Masculino
-        </label>
-        <label for="feminino">
-            <input type="radio" id="feminino" name="sexo" value="F" required> Feminino
-        </label>
-        <br><br>
-        <label for="fone">Fone:</label>
-        <input type="text" name="fone" required>
-        <br><br>
         <label for="email">Email:</label>
         <input type="email" name="email" required>
         <br><br>
         <label for="senha">Senha:</label>
         <input type="password" name="senha" required>
+        <br><br>
+        <label for="senha">Confirmação de senha:</label>
+        <input type="password" name="senhaConfirma" required>
         <br><br>
         <input type="submit" value="Adicionar">
     </form>

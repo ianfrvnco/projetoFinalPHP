@@ -1,68 +1,54 @@
 <?php
-session_start();
-include_once './config/config.php';
-include_once './classes/Usuario.php';
+require_once './config/config.php';
+require_once './classes/database.php';
+require_once './classes/noticia.php';
 
 
-$usuario = new Usuario($db);
 
-
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    if (isset($_POST['login'])) {
-        // Processar login
-        $email = $_POST['email'];
-        $senha = $_POST['senha'];
-        if ($dados_usuario = $usuario->login($email, $senha)) {
-            $_SESSION['usuario_id'] = $dados_usuario['id'];
-            header('Location: portal.php');
-            exit();
-        } else {
-            $mensagem_erro = "Credenciais inválidas!";
-        }
-    }
+if (!isset($_SESSION['usuario'])) {
+    include 'templates/header.php';
+} else {
+    include 'templates/headerConectado.php';
 }
+
+
+$noticia = new Noticia($db);
+$noticias = $noticia->ler()
 ?>
-<!DOCTYPE html>
-<link rel="stylesheet" href="./css/reset.css">
-<link rel="stylesheet" href="./css/index.css">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet">
-<html>
 
+<div id="inicio">
+    <h2>Últimas Notícias</h2>
+    <p>Veja o que há de novo em nossa região</p>
+</div>
 
+<div class="noticias-container">
+    <?php
+    if ($noticias) {
+        foreach ($noticias as $item) {
+            // Pega os primeiros 150 caracteres do conteúdo
+            $conteudo_curto = mb_substr($item->conteudo, 0, 150);
+            if (mb_strlen($item->conteudo) > 150) {
+                $conteudo_curto .= "...";
+            }
 
-<head>
-    <title>G11 Notícias</title>
-</head>
+            // Exibe o card
+            echo '<article class="card">';
+            echo '  <div class="card-conteudo">';
+            echo '      <h3>' . htmlspecialchars($item->titulo) . '</h3>';
+            echo '      <p>' . htmlspecialchars($conteudo_curto) . '</p>';
+            echo '  </div>';
+            echo '  <div class="card-meta">';
+            echo '      Publicado em: ' . htmlspecialchars($item->hora_de_publicacao);
+            echo '  </div>';
+            echo '</article>';
+        }
+    } else {
+        echo "<p>Nenhuma notícia encontrada no banco de dados.</p>";
+    }
 
-
-<body>
-
-
-    <div class="container">
-
-
-        <div class="box">
-            <h1>LOGIN</h1>
-
-
-            <form method="POST">
-                <input type="email" name="email" placeholder="EMAIL" required>
-                <br><br>
-                <input type="password" name="senha" placeholder="SENHA" required>
-                <br><br>
-                <input type="submit" name="login" value="Login">
-            </form>
-            <p>Não tem uma conta? <br></p>
-            <p><a href="./registrar.php">Registre-se aqui</a></p>
-            <div class="mensagem">
-                <?php if (isset($mensagem_erro)) echo '<p>' . $mensagem_erro . '</p>'; ?>
-            </div>
-        </div>
-
-
-</body>
-
-
-</html>
+    $db = null; // Fecha a conexão
+    ?>
+</div> <?php
+        // 9. INCLUI o rodapé
+        include 'templates/footer.php';
+        ?>

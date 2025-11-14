@@ -1,23 +1,27 @@
 <?php
-class Usuario {
+class Usuario
+{
     private $conn;
     private $table_name = "usuarios";
 
 
-    public function __construct($db) {
+    public function __construct($db)
+    {
         $this->conn = $db;
     }
-    
-    public function registrar($nome, $sexo, $fone, $email, $senha) {
-        $query = "INSERT INTO " . $this->table_name . " (nome, sexo, fone, email, senha) VALUES (?, ?, ?, ?, ?)";
+
+    public function registrar($nome, $email, $senha)
+    {
+        $query = "INSERT INTO " . $this->table_name . " (nome, email, senha) VALUES (?, ?, ?)";
         $stmt = $this->conn->prepare($query);
         $hashed_password = password_hash($senha, PASSWORD_BCRYPT);
-        $stmt->execute([$nome, $sexo, $fone, $email, $hashed_password]);
+        $stmt->execute([$nome, $email, $hashed_password]);
         return $stmt;
     }
 
 
-    public function login($email, $senha) {
+    public function login($email, $senha)
+    {
         $query = "SELECT * FROM " . $this->table_name . " WHERE email = ?";
         $stmt = $this->conn->prepare($query);
         $stmt->execute([$email]);
@@ -27,16 +31,21 @@ class Usuario {
         }
         return false;
     }
-    public function criar($nome, $sexo, $fone, $email, $senha) {
-        return $this->registrar($nome, $sexo, $fone, $email, $senha);
+
+    public function criar($nome, $email, $senha)
+    {
+        return $this->registrar($nome, $email, $senha);
     }
-    public function ler() { 
-        $query = "SELECT * FROM " . $this->table_name; 
-        $stmt = $this->conn->prepare($query); 
-        $stmt->execute(); 
-        return $stmt; 
-    } 
-    public function lerPorId($id) {
+
+    public function ler()
+    {
+        $query = "SELECT * FROM " . $this->table_name;
+        $stmt = $this->conn->prepare($query);
+        $stmt->execute();
+        return $stmt;
+    }
+    public function lerPorId($id)
+    {
         $query = "SELECT * FROM " . $this->table_name . " WHERE id = ?";
         $stmt = $this->conn->prepare($query);
         $stmt->execute([$id]);
@@ -44,19 +53,30 @@ class Usuario {
     }
 
 
-    public function atualizar($id, $nome, $sexo, $fone, $email) {
-        $query = "UPDATE " . $this->table_name . " SET nome = ?, sexo = ?, fone = ?, email = ? WHERE id = ?"; 
+    public function atualizar($id, $nome, $email)
+    {
+        $query = "UPDATE " . $this->table_name . " SET nome = ?, email = ? WHERE id = ?";
         $stmt = $this->conn->prepare($query);
-        $stmt->execute([$nome, $sexo, $fone, $email, $id]);
-        return $stmt; 
+        $stmt->execute([$nome, $email, $id]);
+        return $stmt;
     }
 
 
-    public function deletar($id) {
-        $query = "DELETE FROM " . $this->table_name . " WHERE id = ?"; 
-        $stmt = $this->conn->prepare($query); 
-        $stmt->execute([$id]); 
-        return $stmt; 
+    public function deletar($id)
+    {
+        $query = "DELETE FROM " . $this->table_name . " WHERE id = ?";
+        $stmt = $this->conn->prepare($query);
+        $stmt->execute([$id]);
+        return $stmt;
+    }
+
+    public function buscarPorEmail($email)
+    {
+        $query = "SELECT * FROM usuarios WHERE email = :email LIMIT 1";
+        $stmt = $this->conn->prepare($query);
+        $stmt->bindParam(':email', $email);
+        $stmt->execute();
+
+        return $stmt->fetch(PDO::FETCH_ASSOC);
     }
 }
-?>

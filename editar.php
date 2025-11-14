@@ -12,11 +12,9 @@ $usuario = new Usuario($db);
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $id = $_POST['id'];
     $nome = $_POST['nome'];
-    $sexo = $_POST['sexo'];
-    $fone = $_POST['fone'];
     $email = $_POST['email'];
-    $usuario->atualizar($id, $nome, $sexo, $fone, $email);
-    header('Location: portal.php');
+    $usuario->atualizar($id, $nome, $email);
+    header('Location: index.php');
     exit();
 }
 if (isset($_GET['id'])) {
