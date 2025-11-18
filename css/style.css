@@ -1,0 +1,224 @@
+html,
+body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+    flex-direction: column;
+}
+
+main {
+    flex: 1;
+}
+
+#inteiro {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: rgb(124, 0, 108);
+    width: 100%;
+    max-width: 300px;
+    height: 275px;
+    margin: 15px;
+    padding: 15px;
+    border: 1px solid black;
+    border-radius: 15px;
+}
+
+a {
+    text-decoration: none;
+    color: rgb(250, 250, 250);
+}
+
+.box h1 {
+    font-size: 22px;
+    font-weight: bold;
+}
+
+.box input {
+    padding: 5px;
+    border-radius: 4px;
+    border: none;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    width: 100vw;
+    box-sizing: border-box;
+}
+
+@media (max-width: 600px) {
+    .box {
+        width: 100%;
+        margin: 10px 0;
+        border-radius: 0;
+    }
+}
+
+.box form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 15px;
+}
+
+#inicio {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    font-size: 22px;
+    margin: 15px 0;
+}
+
+.botoes {
+    flex-direction: row;
+}
+
+.containerCadastro {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    width: 100vw;
+    box-sizing: border-box;
+}
+
+.boxCadastro {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: rgb(124, 0, 108);
+    width: 100%;
+    max-width: 350px;
+    min-height: 320px;
+    margin: 15px;
+    padding: 20px;
+    border: 1px solid black;
+    border-radius: 15px;
+    color: #fff;
+}
+
+.boxCadastro h1 {
+    font-size: 22px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.boxCadastro input {
+    padding: 8px;
+    border-radius: 4px;
+    border: none;
+    margin: 8px 0;
+    width: 90%;
+    text-align: center;
+}
+
+.boxCadastro form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: rgb(124, 0, 108);
+    width: 100%;
+    max-width: 350px;
+    min-height: 220px;
+    border-radius: 15px;
+    color: #fff;
+}
+
+.boxCadastro input[type="submit"] {
+    margin-top: 15px;
+    padding: 8px 12px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    background: #fff;
+    color: rgb(124, 0, 108);
+    font-weight: bold;
+}
+
+.mensagemCadastro {
+    margin-top: 10px;
+    color: yellow;
+    font-size: 14px;
+}
+
+.icone-perfil {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    margin-bottom: 10px;
+    cursor: pointer;
+}
+
+.containerPostar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.boxPostar {
+    background: rgb(124, 0, 108);
+    color: white;
+    padding: 20px;
+    border-radius: 15px;
+    max-width: 500px;
+    width: 100%;
+    text-align: center;
+}
+
+.boxPostar h1 {
+    margin-bottom: 15px;
+}
+
+.boxPostar textarea {
+    width: 90%;
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 5px;
+    border: none;
+}
+
+.boxPostar input {
+    width: 90%;
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 5px;
+    border: none;
+}
+
+.boxPostar button {
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    background: white;
+    color: rgb(124, 0, 108);
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.erroPostar {
+    color: yellow;
+    margin: 10px 0;
+}
+
+.sucessoPostar {
+    color: lightgreen;
+    margin: 10px 0;
+}
