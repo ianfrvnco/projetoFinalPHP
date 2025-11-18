@@ -28,27 +28,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 }
 
 ?>
-<!DOCTYPE html>
-
-<html>
-
-
-
-<head>
-    <title>G11 Notícias</title>
-    
-</head>
-
-
-<body>
-
 
     <div class="container">
 
-
         <div class="box">
             <h1>LOGIN</h1>
-
 
             <form method="POST">
                 <input type="email" name="email" placeholder="EMAIL" required>

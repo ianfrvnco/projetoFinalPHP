@@ -23,13 +23,14 @@ main {
     align-items: center;
     justify-content: center;
     background: rgb(124, 0, 108);
-    width: 100%;
-    max-width: 300px;
-    height: 275px;
-    margin: 15px;
-    padding: 15px;
-    border: 1px solid black;
+    color: white;
+    padding: 30px;
     border-radius: 15px;
+    width: 55%;      
+    height: 80%;     
+    max-width: none;  
+    text-align: center;
+    box-sizing: border-box;
 }
 
 a {
@@ -38,40 +39,55 @@ a {
 }
 
 .box h1 {
-    font-size: 22px;
-    font-weight: bold;
+    font-size: 26px;
+    margin-bottom: 20px;
 }
 
 .box input {
-    padding: 5px;
-    border-radius: 4px;
+    padding: 12px;
+    border-radius: 6px;
     border: none;
+    width: 80%;
+    max-width: 400px;
+    font-size: 1rem;
+    box-sizing: border-box;
+}
+
+.box input[type="submit"] {
+    background: white;
+    color: rgb(124, 0, 108);
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.box input[type="submit"]:hover {
+    background: #eee;
 }
 
 .container {
     display: flex;
-    flex-direction: column;
-    align-items: center;
     justify-content: center;
+    align-items: center;
     height: 100vh;
     width: 100vw;
+    margin: 0;
+    padding: 0;
     box-sizing: border-box;
-}
-
-@media (max-width: 600px) {
-    .box {
-        width: 100%;
-        margin: 10px 0;
-        border-radius: 0;
-    }
 }
 
 .box form {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
-    padding: 15px;
+    gap: 15px;
+    width: 100%;
+}
+
+.mensagem {
+    margin-top: 15px;
+    font-size: 14px;
+    color: yellow;
 }
 
 #inicio {
@@ -89,11 +105,12 @@ a {
 
 .containerCadastro {
     display: flex;
-    flex-direction: column;
-    align-items: center;
     justify-content: center;
+    align-items: center;
     height: 100vh;
     width: 100vw;
+    margin: 0;
+    padding: 0;
     box-sizing: border-box;
 }
 
@@ -103,29 +120,33 @@ a {
     align-items: center;
     justify-content: center;
     background: rgb(124, 0, 108);
-    width: 100%;
-    max-width: 350px;
-    min-height: 320px;
-    margin: 15px;
-    padding: 20px;
+    width: 80%;
+    height: 80%;
+    max-width: none;
+    margin: 0;
+    padding: 30px;
     border: 1px solid black;
     border-radius: 15px;
     color: #fff;
+    box-sizing: border-box;
+    text-align: center;
 }
 
 .boxCadastro h1 {
-    font-size: 22px;
+    font-size: 26px;
     font-weight: bold;
     margin-bottom: 20px;
 }
 
 .boxCadastro input {
-    padding: 8px;
-    border-radius: 4px;
+    padding: 12px;
+    border-radius: 6px;
     border: none;
-    margin: 8px 0;
-    width: 90%;
+    width: 80%;
+    max-width: 600px;
+    font-size: 1rem;
     text-align: center;
+    box-sizing: border-box;
 }
 
 .boxCadastro form {
@@ -133,27 +154,29 @@ a {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    background: rgb(124, 0, 108);
     width: 100%;
-    max-width: 350px;
-    min-height: 220px;
-    border-radius: 15px;
-    color: #fff;
+    gap: 15px;
 }
 
 .boxCadastro input[type="submit"] {
     margin-top: 15px;
-    padding: 8px 12px;
+    padding: 12px 20px;
     border: none;
-    border-radius: 4px;
+    border-radius: 6px;
     cursor: pointer;
     background: #fff;
     color: rgb(124, 0, 108);
     font-weight: bold;
+    transition: background 0.3s ease;
 }
 
+.boxCadastro input[type="submit"]:hover {
+    background: #eee;
+}
+
+
 .mensagemCadastro {
-    margin-top: 10px;
+    margin-top: 15px;
     color: yellow;
     font-size: 14px;
 }
@@ -171,46 +194,64 @@ a {
     justify-content: center;
     align-items: center;
     height: 100vh;
+    width: 100vw;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
 .boxPostar {
     background: rgb(124, 0, 108);
     color: white;
-    padding: 20px;
+    padding: 30px;
     border-radius: 15px;
-    max-width: 500px;
-    width: 100%;
+    width: 55%;    
+    height: 80%;       
+    max-width: none;     
     text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    box-sizing: border-box;
 }
 
 .boxPostar h1 {
-    margin-bottom: 15px;
+    margin-bottom: 20px;
+    font-size: 26px;
 }
 
+.boxPostar form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    width: 100%;
+}
+
+.boxPostar input,
 .boxPostar textarea {
-    width: 90%;
-    padding: 10px;
-    margin: 10px 0;
-    border-radius: 5px;
+    width: 80%;
+    max-width: 600px;
+    padding: 12px;
+    border-radius: 6px;
     border: none;
-}
-
-.boxPostar input {
-    width: 90%;
-    padding: 10px;
-    margin: 10px 0;
-    border-radius: 5px;
-    border: none;
+    font-size: 1rem;
+    box-sizing: border-box;
 }
 
 .boxPostar button {
-    padding: 10px 15px;
+    padding: 12px 20px;
     border: none;
-    border-radius: 5px;
+    border-radius: 6px;
     background: white;
     color: rgb(124, 0, 108);
     font-weight: bold;
     cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.boxPostar button:hover {
+    background: #eee;
 }
 
 .erroPostar {
@@ -221,4 +262,57 @@ a {
 .sucessoPostar {
     color: lightgreen;
     margin: 10px 0;
+}
+
+@media (max-width: 820px) {
+    .container {
+        height: 100vh;
+        width: 100vw;
+        padding: 0;
+        margin: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        box-sizing: border-box;
+    }
+
+    .box {
+        width: 100vw;
+        height: 100vh;
+        max-width: none;
+        margin: 0;
+        padding: 30px;
+        border-radius: 0;
+        box-sizing: border-box;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .box h1 {
+        font-size: 24px;
+        text-align: center;
+    }
+
+    .box input {
+        width: 90%;
+        font-size: 16px;
+        margin: 10px 0;
+    }
+
+    .box form {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .mensagem {
+        font-size: 14px;
+        color: yellow;
+        margin-top: 10px;
+        text-align: center;
+    }
 }

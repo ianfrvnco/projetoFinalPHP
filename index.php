@@ -44,12 +44,14 @@ $noticias = $noticia->ler()
 
                 echo '<article class="card">';
                 echo '  <img src="' . $caminhoImagem . '" alt="Imagem da notícia" class="card-imagem">';
+                echo '  <div class="card-inferior">';
                 echo '  <div class="card-conteudo">';
                 echo '      <h3>' . htmlspecialchars($item->titulo) . '</h3>';
                 echo '      <p>' . htmlspecialchars($conteudo_curto) . '</p>';
                 echo '  </div>';
                 echo '  <div class="card-meta">';
                 echo '      Publicado em: ' . htmlspecialchars($item->hora_de_publicacao);
+                echo '  </div>';
                 echo '  </div>';
                 echo '  <div class="card-botoes">';
                 echo '      <button class="btn-expandir" 

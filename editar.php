@@ -66,9 +66,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['editar'])) {
             color: white;
             padding: 20px;
             border-radius: 15px;
-            max-width: 350px;
-            width: 100%;
+            width: 80%;
+            height: 80%;
+            max-width: none;
             text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            box-sizing: border-box;
         }
 
         .box h1 {
@@ -76,19 +82,35 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['editar'])) {
             margin-bottom: 15px;
         }
 
-        .box input {
-            padding: 8px;
-            margin: 8px 0;
-            border-radius: 4px;
-            border: none;
-            width: 90%;
+        .box form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            height: 100%;
+            gap: 15px;
+            box-sizing: border-box;
         }
 
-        .box button {
-            margin-top: 10px;
-            padding: 8px 12px;
+        .box input {
+            padding: 12px;
+            margin: 0;
+            border-radius: 6px;
             border: none;
-            border-radius: 4px;
+            width: 80%;
+            max-width: 600px;
+            font-size: 1rem;
+            box-sizing: border-box;
+        }
+
+
+        .box button {
+            flex: 1;
+            min-width: 120px;
+            padding: 12px;
+            border: none;
+            border-radius: 6px;
             background: white;
             color: rgb(124, 0, 108);
             font-weight: bold;
@@ -156,6 +178,47 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['editar'])) {
             border: none;
             border-radius: 4px;
             cursor: pointer;
+        }
+
+        /* Telas grandes (desktop) */
+        @media (min-width: 1025px) {
+            .box {
+                width: 80%;
+                height: 80%;
+            }
+
+            .box input {
+                width: 70%;
+                /* inputs mais estreitos para desktop */
+                font-size: 1.1rem;
+            }
+        }
+
+        /* Tablets */
+        @media (max-width: 1024px) {
+            .box {
+                width: 90%;
+                height: auto;
+            }
+
+            .box input {
+                width: 85%;
+                font-size: 1rem;
+            }
+        }
+
+        /* Celulares */
+        @media (max-width: 600px) {
+            .box {
+                width: 100%;
+                height: auto;
+                border-radius: 0;
+            }
+
+            .box input {
+                width: 95%;
+                font-size: 0.95rem;
+            }
         }
     </style>
 </head>
@@ -225,7 +288,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['editar'])) {
 
         document.querySelectorAll('.icones-grid img').forEach(img => {
             img.addEventListener('click', () => {
-                if (editando) { 
+                if (editando) {
                     iconeAtual.src = img.src;
                     iconeSelecionado.value = img.dataset.icone;
                     modal.style.display = 'none';
@@ -236,7 +299,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['editar'])) {
         btnEditar.addEventListener('click', () => {
             inputs.forEach(input => input.disabled = false);
             btnEditar.style.display = 'none';
-            btnSalvar.disabled = false; 
+            btnSalvar.disabled = false;
             editando = true;
         });
     </script>
